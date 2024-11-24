@@ -34,8 +34,8 @@ The assets used in this game were sourced from [itch.io](https://itch.io), a wel
 Here are links to some specific resources:  
 - [Font](https://datagoblin.itch.io/monogram)  
 - [Background](https://szadiart.itch.io/pixel-fantasy-caves) 
-- [GUI Elements] (https://mounirtohami.itch.io/pixel-art-gui-elements)
-- [Fox] (https://elthen.itch.io/2d-pixel-art-fox-sprites)
+- [GUI Elements](https://mounirtohami.itch.io/pixel-art-gui-elements)
+- [Fox](https://elthen.itch.io/2d-pixel-art-fox-sprites)
 
 *Note*: While I do not have links to all the assets used, every asset was verified as royalty-free according to its terms on itch.io.
 
