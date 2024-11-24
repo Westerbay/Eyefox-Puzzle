@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Eyefox Puzzle</string>
+    <string name="home">Home</string>
+    <string name="level">Livello</string>
+    <string name="cell">Cell</string>
+    <string name="zero">0</string>
+    <string name="play">Giocare</string>
+    <string name="reset">Reimposta</string>
+    <string name="exit">Uscire</string>
+    <string name="confirmation">Conferma</string>
+    <string name="resetMessage">Sei sicuro di voler ricominciare da zero?</string>
+    <string name="yes">Sì</string>
+    <string name="cancel">Annulla</string>
+</resources>
