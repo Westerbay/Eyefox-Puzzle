@@ -98,7 +98,7 @@ public class GridView implements Updatable {
     public void play1() {
         MediaPlayer mp = MediaPlayer.create(_context, R.raw.interchange1);
         if (mp != null) {
-            mp.setVolume(3.5f, 3.5f);
+            mp.setVolume(0.5f, 0.5f);
             mp.start();
         }
     }
@@ -106,7 +106,7 @@ public class GridView implements Updatable {
     public void play2() {
         MediaPlayer mp = MediaPlayer.create(_context, R.raw.interchange2);
         if (mp != null) {
-            mp.setVolume(3.5f, 3.5f);
+            mp.setVolume(0.5f, 0.5f);
             mp.start();
         }
     }

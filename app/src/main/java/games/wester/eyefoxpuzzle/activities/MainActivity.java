@@ -114,6 +114,8 @@ public class MainActivity extends AppCompatActivity {
     public void finishAndRemoveTask() {
         super.finishAndRemoveTask();
         _music.stop();
+        _music = null;
+        System.exit(0);
     }
 
 }

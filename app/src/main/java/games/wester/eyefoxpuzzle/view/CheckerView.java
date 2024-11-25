@@ -35,7 +35,7 @@ public class CheckerView implements Updatable {
         _correct = correct;
         _wrong = wrong;
         _wrongSound.setVolume(0.2f, 0.2f);
-        _correctSound.setVolume(0.1f, 0.1f);
+        _correctSound.setVolume(0.2f, 0.2f);
         levelStageManager.setCorrectPlayer(this::playCorrect);
         levelStageManager.setWrongPlayer(this::playWrong);
     }

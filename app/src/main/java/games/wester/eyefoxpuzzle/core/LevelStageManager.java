@@ -89,7 +89,7 @@ public class LevelStageManager {
         if (_levelStage.hasWon()) {
             _correctPlayer.play();
             _correct = true;
-            new TimerLimit(_winTask, 600).start();
+            new TimerLimit(_winTask, 400).start();
         }
         else {
             _wrongPlayer.play();
