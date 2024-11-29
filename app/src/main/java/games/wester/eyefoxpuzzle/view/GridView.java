@@ -11,6 +11,8 @@ package games.wester.eyefoxpuzzle.view;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.view.ViewTreeObserver;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import androidx.gridlayout.widget.GridLayout;
@@ -76,6 +78,14 @@ public class GridView implements Updatable {
             params.columnSpec = GridLayout.spec(cell.columnIndex, 1, 1f);
             newButton.setLayoutParams(params);
             _grid.set(cell, newButton);
+            Animation blinkAnimation = AnimationUtils.loadAnimation(context, R.anim.blink_animation);
+            newButton.setOnFocusChangeListener((view, hasFocus) -> {
+                if (hasFocus) {
+                    view.startAnimation(blinkAnimation);
+                } else {
+                    view.clearAnimation();
+                }
+            });
             gridLayout.addView(newButton);
         }
         _puzzleManager.setPlayerFirst(this::play1);
