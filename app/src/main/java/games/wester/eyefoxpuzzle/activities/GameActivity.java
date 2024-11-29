@@ -8,6 +8,8 @@ package games.wester.eyefoxpuzzle.activities;
  * No warranties are provided, and any use of this code is at your own risk.
  */
 
+import static games.wester.eyefoxpuzzle.activities.MainActivity._music;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -42,12 +44,14 @@ public class GameActivity extends AppCompatActivity  {
     private GameManager _gameAdaptation;
     private Handler _handler;
     private Runnable _imageChanger;
+    private boolean _switch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.level_stage);
+        _switch = false;
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
@@ -132,6 +136,7 @@ public class GameActivity extends AppCompatActivity  {
     }
 
     public void switchHome() {
+        _switch = true;
         _handler.removeCallbacks(_imageChanger);
         _levelStageManager = null;
         _leftPuzzleManager = null;
@@ -145,6 +150,7 @@ public class GameActivity extends AppCompatActivity  {
     }
 
     public void switchScene() {
+        _switch = true;
         _handler.removeCallbacks(_imageChanger);
         _levelStageManager = null;
         _leftPuzzleManager = null;
@@ -155,6 +161,22 @@ public class GameActivity extends AppCompatActivity  {
             GameActivity.this.startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }, 100);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (_music != null && _music.isPlaying() && !_switch) {
+            _music.pause();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (_music != null && !_music.isPlaying()) {
+            _music.start();
+        }
     }
 
 }

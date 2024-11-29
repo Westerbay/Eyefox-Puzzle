@@ -8,6 +8,8 @@ package games.wester.eyefoxpuzzle.activities;
  * No warranties are provided, and any use of this code is at your own risk.
  */
 
+import static games.wester.eyefoxpuzzle.activities.MainActivity._music;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,10 +26,13 @@ import games.wester.eyefoxpuzzle.R;
  */
 public class EmptyTransition extends AppCompatActivity {
 
+    private boolean _switch;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
+        _switch = false;
         setContentView(R.layout.black);
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
@@ -39,10 +44,27 @@ public class EmptyTransition extends AppCompatActivity {
     }
 
     public void switchScene() {
+        _switch = true;
         Intent intent = new Intent(EmptyTransition.this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         EmptyTransition.this.startActivity(intent);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (_music != null && _music.isPlaying() && !_switch) {
+            _music.pause();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (_music != null && !_music.isPlaying()) {
+            _music.start();
+        }
     }
 
 }

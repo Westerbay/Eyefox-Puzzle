@@ -30,18 +30,20 @@ import games.wester.westerlib.core.Updatable;
  */
 public class MainActivity extends AppCompatActivity {
 
-    private static MediaPlayer _music = null;
+    public static MediaPlayer _music = null;
 
     private GameManager _gameAdaptation;
     private AlertDialog _confirmation;
     private Handler _handler;
     private Runnable _imageChanger;
+    private boolean _switch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.maintitle);
+        _switch = false;
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_FULLSCREEN
@@ -94,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void switchScene() {
+        _switch = true;
         _handler.removeCallbacks(_imageChanger);
         Intent intent = new Intent(MainActivity.this, Transition.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -116,6 +119,22 @@ public class MainActivity extends AppCompatActivity {
         _music.stop();
         _music = null;
         System.exit(0);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (_music != null && _music.isPlaying() && !_switch) {
+            _music.pause();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (_music != null && !_music.isPlaying()) {
+            _music.start();
+        }
     }
 
 }
