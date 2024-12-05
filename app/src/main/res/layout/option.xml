@@ -152,20 +152,7 @@
         app:layout_constraintGuide_percent="0.85" />
 
     <ImageButton
-        android:id="@+id/play"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:contentDescription="@string/play"
-        android:scaleType="fitXY"
-        app:backgroundTint="@color/transparency"
-        app:layout_constraintBottom_toTopOf="@+id/guideline53"
-        app:layout_constraintEnd_toStartOf="@+id/guideline57"
-        app:layout_constraintStart_toStartOf="@+id/guideline56"
-        app:layout_constraintTop_toTopOf="@+id/guideline52"
-        app:srcCompat="@drawable/button_background" />
-
-    <ImageButton
-        android:id="@+id/training"
+        android:id="@+id/reset"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="Training"
@@ -178,7 +165,7 @@
         app:srcCompat="@drawable/button_background" />
 
     <ImageButton
-        android:id="@+id/option"
+        android:id="@+id/homeButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="option"
@@ -275,27 +262,13 @@
         app:layout_constraintGuide_percent="0.81" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textReset"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/font"
         android:gravity="center"
-        android:text="@string/play"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/guideline58"
-        app:layout_constraintEnd_toStartOf="@+id/guideline64"
-        app:layout_constraintStart_toStartOf="@+id/guideline65"
-        app:layout_constraintTop_toTopOf="@+id/guideline60" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:autoSizeTextType="uniform"
-        android:fontFamily="@font/font"
-        android:gravity="center"
-        android:text="Training"
+        android:text="Reset"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline62"
         app:layout_constraintEnd_toStartOf="@+id/guideline64"
@@ -303,13 +276,13 @@
         app:layout_constraintTop_toTopOf="@+id/guideline61" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textHome"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/font"
         android:gravity="center"
-        android:text="Options"
+        android:text="Home"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline63"
         app:layout_constraintEnd_toStartOf="@+id/guideline64"
@@ -339,7 +312,6 @@
         android:gravity="center"
         android:maxLines="1"
         android:text="Musique:"
-        android:visibility="gone"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline58"
         app:layout_constraintEnd_toStartOf="@+id/guideline64"
@@ -350,7 +322,6 @@
         android:id="@+id/soundBar"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:visibility="gone"
         android:max="100"
         android:progress="50"
         android:progressDrawable="@drawable/progressbar"
@@ -360,63 +331,5 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline57"
         app:layout_constraintStart_toStartOf="@+id/guideline56"
         app:layout_constraintTop_toTopOf="@+id/guideline58" />
-
-    <ImageButton
-        android:id="@+id/reset"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:contentDescription="Training"
-        android:scaleType="fitXY"
-        app:backgroundTint="@color/transparency"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/guideline54"
-        app:layout_constraintEnd_toStartOf="@+id/guideline57"
-        app:layout_constraintStart_toStartOf="@+id/guideline56"
-        app:layout_constraintTop_toTopOf="@+id/guideline53"
-        app:srcCompat="@drawable/button_background" />
-
-    <ImageButton
-        android:id="@+id/homeButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:contentDescription="option"
-        android:visibility="gone"
-        android:scaleType="fitXY"
-        app:backgroundTint="@color/transparency"
-        app:layout_constraintBottom_toTopOf="@+id/guideline55"
-        app:layout_constraintEnd_toStartOf="@+id/guideline57"
-        app:layout_constraintStart_toStartOf="@+id/guideline56"
-        app:layout_constraintTop_toTopOf="@+id/guideline54"
-        app:srcCompat="@drawable/button_background" />
-
-    <TextView
-        android:id="@+id/textReset"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:autoSizeTextType="uniform"
-        android:fontFamily="@font/font"
-        android:gravity="center"
-        android:visibility="gone"
-        android:text="Reset"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/guideline62"
-        app:layout_constraintEnd_toStartOf="@+id/guideline64"
-        app:layout_constraintStart_toStartOf="@+id/guideline65"
-        app:layout_constraintTop_toTopOf="@+id/guideline61" />
-
-    <TextView
-        android:id="@+id/textHome"
-        android:visibility="gone"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:autoSizeTextType="uniform"
-        android:fontFamily="@font/font"
-        android:gravity="center"
-        android:text="Home"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/guideline63"
-        app:layout_constraintEnd_toStartOf="@+id/guideline64"
-        app:layout_constraintStart_toStartOf="@+id/guideline65"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

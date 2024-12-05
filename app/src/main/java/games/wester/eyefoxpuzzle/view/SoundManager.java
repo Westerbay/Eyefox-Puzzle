@@ -38,14 +38,14 @@ public class SoundManager {
     private final Context _context;
 
     private SoundManager(Context context) {
+        _correctSound = MediaPlayer.create(context, R.raw.correct);
+        _wrongSound = MediaPlayer.create(context, R.raw.wrong);
         _optionSave = new OptionSave(context);
         _music = MediaPlayer.create(context, R.raw.game);
         _music.setLooping(true);
         _actualLevel = _optionSave.loadLevel();
         changeVolume(_actualLevel);
         _music.start();
-        _correctSound = MediaPlayer.create(context, R.raw.correct);
-        _wrongSound = MediaPlayer.create(context, R.raw.wrong);
         _context = context;
     }
 
@@ -58,17 +58,16 @@ public class SoundManager {
         _actualLevel = value;
         float volume = 0.8f * getFloatLevel();
         _music.setVolume(volume, volume);
+        volume = 0.2f * getFloatLevel();
+        _wrongSound.setVolume(volume, volume);
+        _correctSound.setVolume(volume, volume);
     }
 
     public void startCorrectSound() {
-        float volume = 0.2f * getFloatLevel();
-        _correctSound.setVolume(volume, volume);
         _correctSound.start();
     }
 
     public void startWrongSound() {
-        float volume = 0.2f * getFloatLevel();
-        _wrongSound.setVolume(volume, volume);
         _wrongSound.start();
     }
 
