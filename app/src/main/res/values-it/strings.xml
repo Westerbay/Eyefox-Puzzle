@@ -16,4 +16,6 @@
     <string name="option">Opzioni</string>
     <string name="music">Musica:</string>
     <string name="moves">Mosse:</string>
+    <string name="rules">Regole</string>
+    <string name="rulesDialog">Hai due griglie composte da tessere chiare e scure. L\'obiettivo è rendere le due griglie identiche scambiando il colore di una tessera. Quando effettui uno scambio, verranno invertiti anche i colori di tutte le tessere vicine a quella scambiata. Nota che puoi scambiare solo le tessere della griglia prima della freccia (la freccia indica il risultato finale).</string>
 </resources>

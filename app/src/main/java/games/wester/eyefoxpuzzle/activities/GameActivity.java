@@ -17,12 +17,14 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import games.wester.eyefoxpuzzle.R;
 import games.wester.eyefoxpuzzle.core.LevelStageManager;
 import games.wester.eyefoxpuzzle.core.PuzzleManager;
 import games.wester.eyefoxpuzzle.puzzle.LevelStage;
+import games.wester.eyefoxpuzzle.save.NewSave;
 import games.wester.eyefoxpuzzle.view.CheckerView;
 import games.wester.eyefoxpuzzle.view.FoxView;
 import games.wester.eyefoxpuzzle.view.GridView;
@@ -47,6 +49,8 @@ public class GameActivity extends AppCompatActivity  {
     private Runnable _imageChanger;
     private boolean _switch;
     private MediaPlayer _music;
+    private NewSave _newSave;
+    private AlertDialog _beginDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,7 @@ public class GameActivity extends AppCompatActivity  {
         _music = SoundManager.create(this).getMusic();
         setContentView(R.layout.level_stage);
         _switch = false;
+        _newSave = new NewSave(this);
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
@@ -66,6 +71,10 @@ public class GameActivity extends AppCompatActivity  {
         initManager();
         initView();
         initButton();
+        initDialog();
+        if (_newSave.isNew()) {
+            _beginDialog.show();
+        }
     }
 
     public void initManager() {
@@ -142,6 +151,17 @@ public class GameActivity extends AppCompatActivity  {
         findViewById(R.id.homeButton).setOnClickListener(
                 v -> switchHome()
         );
+    }
+
+    private void initDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.rulesDialog))
+                .setTitle(getString(R.string.rules))
+                .setPositiveButton("OK", (dialog, which) -> {
+                   dialog.dismiss();
+                    _newSave.setNew(false);
+                });
+        _beginDialog = builder.create();
     }
 
     public void switchHome() {
