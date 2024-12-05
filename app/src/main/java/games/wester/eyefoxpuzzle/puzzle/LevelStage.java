@@ -90,7 +90,7 @@ public class LevelStage {
     }
 
     public int computeNumberOfMoves(int level) {
-        int nb = ((level + 30) / 60) + 1;
+        int nb = level / 30 + 1;
         if ((level + 1) % 10 == 0) {
             return nb + 1;
         }

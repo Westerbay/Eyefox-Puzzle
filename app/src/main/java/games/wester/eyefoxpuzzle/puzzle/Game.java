@@ -32,8 +32,12 @@ public class Game {
     }
 
     public void loose() {
-        int penaltyOnFailure = 10;
-        _level -= penaltyOnFailure;
+        if (_level % 10 != 0) {
+            _level = (_level / 10) * 10;
+        }
+        else {
+            _level -= 10;
+        }
         if (_level < 0) {
             _level = 0;
         }

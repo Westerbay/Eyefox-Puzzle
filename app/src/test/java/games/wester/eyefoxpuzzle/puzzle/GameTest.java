@@ -56,4 +56,15 @@ public class GameTest {
         assertEquals(0, game.getLevel());
     }
 
+    @Test
+    public void loose_to_land() {
+        MockLevelStage mockLevel = new MockLevelStage();
+        mockLevel.saveLevel(28);
+        game = new Game(mockLevel);
+        game.loose();
+        assertEquals(20, game.getLevel());
+        game.loose();
+        assertEquals(10, game.getLevel());
+    }
+
 }

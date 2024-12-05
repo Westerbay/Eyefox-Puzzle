@@ -52,9 +52,9 @@ public class LevelStageTest {
         assertEquals(2, levelStage.computeNumberOfMoves(29));
         assertEquals(2, levelStage.computeNumberOfMoves(30));
 
-        assertEquals(2, levelStage.computeNumberOfMoves(88));
-        assertEquals(3, levelStage.computeNumberOfMoves(89));
-        assertEquals(3, levelStage.computeNumberOfMoves(90));
+        assertEquals(3, levelStage.computeNumberOfMoves(60));
+        assertEquals(4, levelStage.computeNumberOfMoves(89));
+        assertEquals(4, levelStage.computeNumberOfMoves(90));
     }
 
 }
