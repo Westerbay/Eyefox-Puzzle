@@ -172,6 +172,12 @@ public class MainActivity extends AppCompatActivity {
     private void initProgressBar() {
         SeekBar seekBar = findViewById(R.id.soundBar);
         seekBar.setProgress(_soundManager.getLevel());
+        if (seekBar.getProgress() >= 93) {
+            seekBar.setProgress(93);
+        }
+        else if (seekBar.getProgress() <= 7) {
+            seekBar.setProgress(7);
+        }
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
