@@ -9,19 +9,21 @@ package games.wester.eyefoxpuzzle.activities;
  */
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.widget.SeekBar;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import games.wester.eyefoxpuzzle.R;
 import games.wester.eyefoxpuzzle.view.FoxView;
 import games.wester.eyefoxpuzzle.view.LevelView;
 import games.wester.eyefoxpuzzle.core.GameManager;
+import games.wester.eyefoxpuzzle.view.SoundManager;
 import games.wester.westerlib.core.Updatable;
 
 /**
@@ -29,28 +31,44 @@ import games.wester.westerlib.core.Updatable;
  */
 public class MainActivity extends AppCompatActivity {
 
-    public static MediaPlayer _music = null;
-
     private GameManager _gameAdaptation;
     private Handler _handler;
     private Runnable _imageChanger;
+    private AlertDialog _confirmation;
+    private SoundManager _soundManager;
     private boolean _switch;
     private State _state = new InMainTitleState();
 
-    interface State {
-        void switchState();
-    }
-
-    class InMainTitleState implements State {
-        public void switchState() {
-            findViewById(R.id.play).setVisibility(View.GONE);
-            findViewById(R.id.training).setVisibility(View.GONE);
-            findViewById(R.id.option).setVisibility(View.GONE);
+    abstract class State {
+        public abstract void displayElements(int mode);
+        void switchState(State state) {
+            displayElements(View.GONE);
+            state.displayElements(View.VISIBLE);
+            _state = state;
         }
     }
 
-    class InOptionState implements State {
-        public void switchState() {
+    class InMainTitleState extends State {
+        @Override
+        public void displayElements(int mode) {
+            findViewById(R.id.play).setVisibility(mode);
+            findViewById(R.id.training).setVisibility(mode);
+            findViewById(R.id.option).setVisibility(mode);
+            findViewById(R.id.textPlay).setVisibility(mode);
+            findViewById(R.id.textTraining).setVisibility(mode);
+            findViewById(R.id.textOption).setVisibility(mode);
+        }
+    }
+
+    class InOptionState extends State {
+        @Override
+        public void displayElements(int mode) {
+            findViewById(R.id.textMusic).setVisibility(mode);
+            findViewById(R.id.soundBar).setVisibility(mode);
+            findViewById(R.id.reset).setVisibility(mode);
+            findViewById(R.id.textReset).setVisibility(mode);
+            findViewById(R.id.homeButton).setVisibility(mode);
+            findViewById(R.id.textHome).setVisibility(mode);
         }
     }
 
@@ -59,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.maintitle);
+        _soundManager = SoundManager.create(this);
         _switch = false;
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
@@ -66,16 +85,12 @@ public class MainActivity extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
         );
         _handler = new Handler(Looper.getMainLooper());
-        if (_music == null) {
-            _music = MediaPlayer.create(this, R.raw.game);
-            _music.setLooping(true);
-            _music.setVolume(0.8f, 0.8f);
-            _music.start();
-        }
         GameManager.createInstance(this);
         _gameAdaptation = GameManager.getInstance();
+        initConfirmation();
         initView();
         initButton();
+        initProgressBar();
     }
 
     public void initView() {
@@ -103,7 +118,13 @@ public class MainActivity extends AppCompatActivity {
                 v -> switchScene()
         );
         findViewById(R.id.option).setOnClickListener(
-                v -> switchOption()
+                v -> _state.switchState(new InOptionState())
+        );
+        findViewById(R.id.homeButton).setOnClickListener(
+                v -> _state.switchState(new InMainTitleState())
+        );
+        findViewById(R.id.reset).setOnClickListener(
+                v -> _confirmation.show()
         );
     }
 
@@ -116,31 +137,56 @@ public class MainActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
-    public void switchOption() {
-        _state.switchState();
+    private void initProgressBar() {
+        SeekBar seekBar = findViewById(R.id.soundBar);
+        seekBar.setProgress(_soundManager.getLevel());
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // Bounds
+                if (seekBar.getProgress() >= 93) {
+                    seekBar.setProgress(93);
+                    _soundManager.changeVolume(93);
+                }
+                else if (seekBar.getProgress() <= 7) {
+                    seekBar.setProgress(7);
+                    _soundManager.changeVolume(7);
+                }
+                else {
+                    _soundManager.changeVolume(seekBar.getProgress());
+                }
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) { }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+
     }
 
-    @Override
-    public void finishAndRemoveTask() {
-        super.finishAndRemoveTask();
-        _music.stop();
-        _music = null;
-        System.exit(0);
+    private void initConfirmation() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.confirmation));
+        builder.setMessage(getString(R.string.resetMessage));
+        builder.setPositiveButton(getString(R.string.yes), (dialogInterface, i) -> _gameAdaptation.reset());
+        builder.setNegativeButton(getString(R.string.cancel), (dialogInterface, i) -> _confirmation.cancel());
+        _confirmation = builder.create();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        if (_music != null && _music.isPlaying() && !_switch) {
-            _music.pause();
+        if (_soundManager.getMusic().isPlaying() && !_switch) {
+            _soundManager.getMusic().pause();
         }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (_music != null && !_music.isPlaying()) {
-            _music.start();
+        if (!_soundManager.getMusic().isPlaying()) {
+            _soundManager.getMusic().start();
         }
     }
 

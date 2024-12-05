@@ -8,9 +8,8 @@ package games.wester.eyefoxpuzzle.activities;
  * No warranties are provided, and any use of this code is at your own risk.
  */
 
-import static games.wester.eyefoxpuzzle.activities.MainActivity._music;
-
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -20,6 +19,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import games.wester.eyefoxpuzzle.R;
+import games.wester.eyefoxpuzzle.view.SoundManager;
 
 /**
  * @author Wester
@@ -27,12 +27,14 @@ import games.wester.eyefoxpuzzle.R;
 public class EmptyTransition extends AppCompatActivity {
 
     private boolean _switch;
+    private MediaPlayer _music;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         _switch = false;
+        _music = SoundManager.create(this).getMusic();
         setContentView(R.layout.black);
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
