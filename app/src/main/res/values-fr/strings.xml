@@ -12,4 +12,8 @@
     <string name="resetMessage">Êtes-vous sûr de vouloir recommencer à partir de zéro ?</string>
     <string name="yes">Oui</string>
     <string name="cancel">Annuler</string>
+    <string name="training">Entraînement</string>
+    <string name="option">Options</string>
+    <string name="music">Musique:</string>
+    <string name="moves">Coups:</string>
 </resources>

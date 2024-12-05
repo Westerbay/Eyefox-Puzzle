@@ -33,6 +33,10 @@
             android:name=".activities.EmptyTransition"
             android:configChanges="orientation|screenSize"
             android:launchMode="standard"/>
+        <activity
+            android:name=".activities.TransitionTraining"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="standard"/>
     </application>
 
 </manifest>

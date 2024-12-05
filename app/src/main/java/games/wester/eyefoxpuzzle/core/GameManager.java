@@ -10,6 +10,8 @@ package games.wester.eyefoxpuzzle.core;
 
 import android.content.Context;
 
+import java.util.Random;
+
 import games.wester.eyefoxpuzzle.puzzle.Game;
 import games.wester.eyefoxpuzzle.puzzle.LevelStage;
 import games.wester.eyefoxpuzzle.save.LevelSave;
@@ -31,6 +33,8 @@ public class GameManager {
         return _instance;
     }
 
+    private boolean _inTraining = false;
+    private int _numberOfMovesTraining = 1;
     private final Game _game;
     private final Fox _fox;
 
@@ -38,6 +42,25 @@ public class GameManager {
         _game = new Game(new LevelSave(context));
         _fox = new Fox(_game);
         _fox.animate();
+    }
+
+    public int getNumberOfMoves() {
+        return _numberOfMovesTraining;
+    }
+
+    public void incrementNumberOfMoves() {
+        _numberOfMovesTraining ++;
+        if (_numberOfMovesTraining > 5) {
+            _numberOfMovesTraining = 1;
+        }
+    }
+
+    public boolean isTraining() {
+        return _inTraining;
+    }
+
+    public void setTraining(boolean training) {
+        _inTraining = training;
     }
 
     public Fox getFox() {
@@ -53,6 +76,11 @@ public class GameManager {
     }
 
     public LevelStage getLevelStage() {
+        if (_inTraining) {
+            Random rand = new Random();
+            int level = (_numberOfMovesTraining - 1) * 30 + 10 * rand.nextInt(3);
+            return new LevelStage(level);
+        }
         return _game.getLevelStage();
     }
 
@@ -61,6 +89,9 @@ public class GameManager {
     }
 
     public void win() {
+        if (_inTraining) {
+            return;
+        }
         _game.nextLevel();
     }
 

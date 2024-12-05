@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -104,15 +105,21 @@ public class GameActivity extends AppCompatActivity  {
         CheckerView checkerView = new CheckerView(
                 this, _levelStageManager, findViewById(R.id.correct), findViewById(R.id.wrong)
         );
-        new LevelView(findViewById(R.id.level), _gameAdaptation, getString(R.string.level)).update();
-        new StarsView(
-                _gameAdaptation.getLevel(),
-                findViewById(R.id.empty_star1), findViewById(R.id.empty_star2),
-                findViewById(R.id.empty_star3), findViewById(R.id.empty_star4),
-                findViewById(R.id.empty_star5), findViewById(R.id.empty_star6),
-                findViewById(R.id.empty_star7), findViewById(R.id.empty_star8),
-                findViewById(R.id.empty_star9), findViewById(R.id.empty_star10)
-        );
+        if (!_gameAdaptation.isTraining()) {
+            new LevelView(findViewById(R.id.level), _gameAdaptation, getString(R.string.level)).update();
+            new StarsView(
+                    _gameAdaptation.getLevel(),
+                    findViewById(R.id.empty_star1), findViewById(R.id.empty_star2),
+                    findViewById(R.id.empty_star3), findViewById(R.id.empty_star4),
+                    findViewById(R.id.empty_star5), findViewById(R.id.empty_star6),
+                    findViewById(R.id.empty_star7), findViewById(R.id.empty_star8),
+                    findViewById(R.id.empty_star9), findViewById(R.id.empty_star10)
+            );
+        }
+        else {
+            TextView trainingView = findViewById(R.id.level);
+            trainingView.setText(R.string.training);
+        }
         findViewById(R.id.cross).setVisibility(View.VISIBLE);
         renderView(foxView, leftGridView, rightGridView, numberOfMovesView, healthView, checkerView);
     }
@@ -158,7 +165,13 @@ public class GameActivity extends AppCompatActivity  {
         _leftPuzzleManager = null;
         _rightPuzzleManager = null;
         _handler.postDelayed(() -> {
-            Intent intent = new Intent(GameActivity.this, Transition.class);
+            Intent intent;
+            if (_gameAdaptation.isTraining()) {
+                intent = new Intent(GameActivity.this, TransitionTraining.class);
+            }
+            else {
+                intent = new Intent(GameActivity.this, Transition.class);
+            }
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             GameActivity.this.startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);

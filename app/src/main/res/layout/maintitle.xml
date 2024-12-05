@@ -13,6 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:adjustViewBounds="true"
+        android:contentDescription="@string/zero"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
@@ -146,6 +147,7 @@
         android:id="@+id/imageView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:contentDescription="@string/zero"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/guideline29"
         app:layout_constraintEnd_toStartOf="@+id/guideline46"
@@ -205,7 +207,7 @@
         android:id="@+id/training"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:contentDescription="training"
+        android:contentDescription="@string/training"
         android:scaleType="fitXY"
         app:backgroundTint="@color/transparency"
         app:layout_constraintBottom_toTopOf="@+id/guideline41"
@@ -218,7 +220,7 @@
         android:id="@+id/option"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:contentDescription="option"
+        android:contentDescription="@string/option"
         android:scaleType="fitXY"
         app:backgroundTint="@color/transparency"
         app:layout_constraintBottom_toTopOf="@+id/guideline40"
@@ -339,7 +341,7 @@
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/font"
         android:gravity="center"
-        android:text="Training"
+        android:text="@string/training"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline48"
         app:layout_constraintEnd_toStartOf="@+id/guideline43"
@@ -353,7 +355,7 @@
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/font"
         android:gravity="center"
-        android:text="Options"
+        android:text="@string/option"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline50"
         app:layout_constraintEnd_toStartOf="@+id/guideline43"
@@ -434,15 +436,15 @@
 
     <TextView
         android:id="@+id/textMusic"
-        android:visibility="gone"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/font"
         android:gravity="center"
         android:maxLines="1"
-        android:text="Musique:"
+        android:text="@string/music"
         android:textColor="@color/white"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/guideline68"
         app:layout_constraintEnd_toStartOf="@+id/guideline28"
         app:layout_constraintStart_toStartOf="@+id/guideline27"
@@ -459,8 +461,8 @@
         android:thumb="@drawable/thumb"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/guideline69"
-        app:layout_constraintEnd_toStartOf="@+id/guideline19"
-        app:layout_constraintStart_toStartOf="@+id/guideline18"
+        app:layout_constraintEnd_toStartOf="@+id/guideline72"
+        app:layout_constraintStart_toStartOf="@+id/guideline71"
         app:layout_constraintTop_toTopOf="@+id/guideline70" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -476,5 +478,55 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.39" />
+
+    <ImageButton
+        android:id="@+id/moves"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/moves"
+        android:scaleType="fitXY"
+        android:visibility="gone"
+        app:backgroundTint="@color/transparency"
+        app:layout_constraintBottom_toTopOf="@+id/guideline41"
+        app:layout_constraintEnd_toStartOf="@+id/guideline19"
+        app:layout_constraintStart_toStartOf="@+id/guideline18"
+        app:layout_constraintTop_toTopOf="@+id/guideline38"
+        app:srcCompat="@drawable/button_background" />
+
+    <TextView
+        android:id="@+id/textMoves"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/font"
+        android:gravity="center"
+        android:text="@string/moves"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/guideline48"
+        app:layout_constraintEnd_toStartOf="@+id/guideline43"
+        app:layout_constraintStart_toStartOf="@+id/guideline42"
+        app:layout_constraintTop_toTopOf="@+id/guideline47" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left"
+        app:constraint_referenced_ids="main" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline71"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.265" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline72"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.735" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

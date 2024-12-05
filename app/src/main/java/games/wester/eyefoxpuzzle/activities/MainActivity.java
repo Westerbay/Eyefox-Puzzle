@@ -24,6 +24,7 @@ import games.wester.eyefoxpuzzle.view.FoxView;
 import games.wester.eyefoxpuzzle.view.LevelView;
 import games.wester.eyefoxpuzzle.core.GameManager;
 import games.wester.eyefoxpuzzle.view.SoundManager;
+import games.wester.eyefoxpuzzle.view.TrainingMovesView;
 import games.wester.westerlib.core.Updatable;
 
 /**
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     class InMainTitleState extends State {
         @Override
         public void displayElements(int mode) {
+            _gameAdaptation.setTraining(false);
             findViewById(R.id.play).setVisibility(mode);
             findViewById(R.id.training).setVisibility(mode);
             findViewById(R.id.option).setVisibility(mode);
@@ -72,6 +74,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    class InTrainingState extends State {
+        @Override
+        public void displayElements(int mode) {
+            _gameAdaptation.setTraining(true);
+            findViewById(R.id.play).setVisibility(mode);
+            findViewById(R.id.textPlay).setVisibility(mode);
+            findViewById(R.id.moves).setVisibility(mode);
+            findViewById(R.id.textMoves).setVisibility(mode);
+            findViewById(R.id.homeButton).setVisibility(mode);
+            findViewById(R.id.textHome).setVisibility(mode);
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +102,9 @@ public class MainActivity extends AppCompatActivity {
         _handler = new Handler(Looper.getMainLooper());
         GameManager.createInstance(this);
         _gameAdaptation = GameManager.getInstance();
+        if (_gameAdaptation.isTraining()) {
+            _state.switchState(new InTrainingState());
+        }
         initConfirmation();
         initView();
         initButton();
@@ -96,17 +114,18 @@ public class MainActivity extends AppCompatActivity {
     public void initView() {
         FoxView _foxView = new FoxView(_gameAdaptation.getFox(), findViewById(R.id.fox));
         LevelView _levelView = new LevelView(findViewById(R.id.level), _gameAdaptation, getString(R.string.level));
-        renderView(_foxView, _levelView);
+        renderView(_foxView, _levelView, new TrainingMovesView(_gameAdaptation, findViewById(R.id.textMoves)));
 
     }
 
-    public void renderView(Updatable foxView, Updatable levelView) {
+    public void renderView(Updatable foxView, Updatable levelView, Updatable movesView) {
         int interval = 1000 / 30;
         _imageChanger = new Runnable() {
             @Override
             public void run() {
                 foxView.update();
                 levelView.update();
+                movesView.update();
                 _handler.postDelayed(this, interval);
             }
         };
@@ -123,15 +142,27 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.homeButton).setOnClickListener(
                 v -> _state.switchState(new InMainTitleState())
         );
+        findViewById(R.id.training).setOnClickListener(
+                v -> _state.switchState(new InTrainingState())
+        );
         findViewById(R.id.reset).setOnClickListener(
                 v -> _confirmation.show()
+        );
+        findViewById(R.id.moves).setOnClickListener(
+                v -> _gameAdaptation.incrementNumberOfMoves()
         );
     }
 
     public void switchScene() {
         _switch = true;
         _handler.removeCallbacks(_imageChanger);
-        Intent intent = new Intent(MainActivity.this, Transition.class);
+        Intent intent;
+        if (_gameAdaptation.isTraining()) {
+            intent = new Intent(MainActivity.this, TransitionTraining.class);
+        }
+        else {
+            intent = new Intent(MainActivity.this, Transition.class);
+        }
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         MainActivity.this.startActivity(intent);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);

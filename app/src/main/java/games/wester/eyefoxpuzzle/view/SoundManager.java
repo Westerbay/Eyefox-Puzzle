@@ -64,10 +64,16 @@ public class SoundManager {
     }
 
     public void startCorrectSound() {
+        if (_actualLevel == 0) {
+            return;
+        }
         _correctSound.start();
     }
 
     public void startWrongSound() {
+        if (_actualLevel == 0) {
+            return;
+        }
         _wrongSound.start();
     }
 
@@ -80,6 +86,9 @@ public class SoundManager {
     }
 
     public void startInterchange1() {
+        if (_actualLevel == 0) {
+            return;
+        }
         MediaPlayer mp = MediaPlayer.create(_context, R.raw.interchange1);
         float volume = 0.5f * getFloatLevel();
         if (mp != null) {
@@ -89,6 +98,9 @@ public class SoundManager {
     }
 
     public void startInterchange2() {
+        if (_actualLevel == 0) {
+            return;
+        }
         MediaPlayer mp = MediaPlayer.create(_context, R.raw.interchange2);
         float volume = 0.5f * getFloatLevel();
         if (mp != null) {
