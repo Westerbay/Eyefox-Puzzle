@@ -275,7 +275,7 @@
         app:layout_constraintGuide_percent="0.81" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textPlay"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:autoSizeTextType="uniform"
@@ -289,7 +289,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline60" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textTraining"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:autoSizeTextType="uniform"
@@ -303,7 +303,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline61" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textOption"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:autoSizeTextType="uniform"
