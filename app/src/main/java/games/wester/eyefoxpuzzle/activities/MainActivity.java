@@ -20,6 +20,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import games.wester.eyefoxpuzzle.R;
+import games.wester.eyefoxpuzzle.save.NewSave;
 import games.wester.eyefoxpuzzle.view.FoxView;
 import games.wester.eyefoxpuzzle.view.LevelView;
 import games.wester.eyefoxpuzzle.core.GameManager;
@@ -200,7 +201,10 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getString(R.string.confirmation));
         builder.setMessage(getString(R.string.resetMessage));
-        builder.setPositiveButton(getString(R.string.yes), (dialogInterface, i) -> _gameAdaptation.reset());
+        builder.setPositiveButton(getString(R.string.yes), (dialogInterface, i) -> {
+                _gameAdaptation.reset();
+                new NewSave(this).setNew(true);
+        });
         builder.setNegativeButton(getString(R.string.cancel), (dialogInterface, i) -> _confirmation.cancel());
         _confirmation = builder.create();
     }
