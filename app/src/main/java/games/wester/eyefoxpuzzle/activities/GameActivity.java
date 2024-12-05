@@ -89,10 +89,10 @@ public class GameActivity extends AppCompatActivity  {
         FoxView foxView = new FoxView(_gameAdaptation.getFox(), findViewById(R.id.fox));
 
         GridView leftGridView = new GridView(
-                this, _leftPuzzleManager, findViewById(R.id.leftGridLayout)
+                this, _leftPuzzleManager, findViewById(R.id.leftGridLayout), false
         );
         GridView rightGridView = new GridView(
-                this, _rightPuzzleManager, findViewById(R.id.rightGridLayout)
+                this, _rightPuzzleManager, findViewById(R.id.rightGridLayout), true
         );
         NumberOfMovesView numberOfMovesView = new NumberOfMovesView(
                 _levelStageManager, findViewById(R.id.numberOfMoves)

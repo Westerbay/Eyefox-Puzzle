@@ -146,11 +146,11 @@ public class MainActivity extends AppCompatActivity {
                 // Bounds
                 if (seekBar.getProgress() >= 93) {
                     seekBar.setProgress(93);
-                    _soundManager.changeVolume(93);
+                    _soundManager.changeVolume(100);
                 }
                 else if (seekBar.getProgress() <= 7) {
                     seekBar.setProgress(7);
-                    _soundManager.changeVolume(7);
+                    _soundManager.changeVolume(0);
                 }
                 else {
                     _soundManager.changeVolume(seekBar.getProgress());

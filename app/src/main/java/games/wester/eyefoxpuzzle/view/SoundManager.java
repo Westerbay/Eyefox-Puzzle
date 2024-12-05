@@ -8,6 +8,7 @@ package games.wester.eyefoxpuzzle.view;
  * No warranties are provided, and any use of this code is at your own risk.
  */
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.media.MediaPlayer;
 
@@ -19,6 +20,7 @@ import games.wester.eyefoxpuzzle.save.OptionSave;
  */
 public class SoundManager {
 
+    @SuppressLint("StaticFieldLeak")
     private static SoundManager _soundManager = null;
 
     public static SoundManager create(Context context) {
@@ -30,8 +32,10 @@ public class SoundManager {
 
     private final MediaPlayer _music;
     private final OptionSave _optionSave;
-    private final float _defaultMusicVolume = 0.8f;
     private int _actualLevel;
+    private final MediaPlayer _correctSound;
+    private final MediaPlayer _wrongSound;
+    private final Context _context;
 
     private SoundManager(Context context) {
         _optionSave = new OptionSave(context);
@@ -40,14 +44,32 @@ public class SoundManager {
         _actualLevel = _optionSave.loadLevel();
         changeVolume(_actualLevel);
         _music.start();
+        _correctSound = MediaPlayer.create(context, R.raw.correct);
+        _wrongSound = MediaPlayer.create(context, R.raw.wrong);
+        _context = context;
+    }
+
+    private float getFloatLevel() {
+        return _actualLevel / 100.0f;
     }
 
     public void changeVolume(int value) {
         _optionSave.saveLevel(value);
         _actualLevel = value;
-        float valueToFloat = value / 100.0f;
-        float volume = _defaultMusicVolume * valueToFloat;
+        float volume = 0.8f * getFloatLevel();
         _music.setVolume(volume, volume);
+    }
+
+    public void startCorrectSound() {
+        float volume = 0.2f * getFloatLevel();
+        _correctSound.setVolume(volume, volume);
+        _correctSound.start();
+    }
+
+    public void startWrongSound() {
+        float volume = 0.2f * getFloatLevel();
+        _wrongSound.setVolume(volume, volume);
+        _wrongSound.start();
     }
 
     public MediaPlayer getMusic() {
@@ -56,6 +78,24 @@ public class SoundManager {
 
     public int getLevel() {
         return _actualLevel;
+    }
+
+    public void startInterchange1() {
+        MediaPlayer mp = MediaPlayer.create(_context, R.raw.interchange1);
+        float volume = 0.5f * getFloatLevel();
+        if (mp != null) {
+            mp.setVolume(volume, volume);
+            mp.start();
+        }
+    }
+
+    public void startInterchange2() {
+        MediaPlayer mp = MediaPlayer.create(_context, R.raw.interchange2);
+        float volume = 0.5f * getFloatLevel();
+        if (mp != null) {
+            mp.setVolume(volume, volume);
+            mp.start();
+        }
     }
 
 }

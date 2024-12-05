@@ -9,7 +9,6 @@ package games.wester.eyefoxpuzzle.view;
  */
 
 import android.content.Context;
-import android.media.MediaPlayer;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -40,11 +39,11 @@ public class GridView implements Updatable {
     private final Grid<Button> _grid;
     private final Grid<Boolean> _referredGrid;
     private final PuzzleManager _puzzleManager;
-    private final Context _context;
+    private final SoundManager _soundManager;
 
-    public GridView(Context context, PuzzleManager puzzleManager, GridLayout gridLayout) {
+    public GridView(Context context, PuzzleManager puzzleManager, GridLayout gridLayout, boolean interact) {
         _puzzleManager = puzzleManager;
-        _context = context;
+        _soundManager = SoundManager.create(context);
         _referredGrid = puzzleManager.getGrid();
         int _size = puzzleManager.getSize();
         _grid = new Grid<>(new Button[_size][_size]);
@@ -56,15 +55,20 @@ public class GridView implements Updatable {
                 gridLayout.requestLayout();
             }
         });
-        fill(context, puzzleManager, gridLayout);
+        fill(context, puzzleManager, gridLayout, interact);
     }
 
-    private void fill(Context context, PuzzleManager puzzleManager, GridLayout gridLayout) {
+    private void fill(Context context, PuzzleManager puzzleManager, GridLayout gridLayout, boolean interact) {
         for (Cell cell: _referredGrid.forEachCells()) {
             Button newButton = new Button(context);
-            newButton.setOnClickListener(
-                    v -> puzzleManager.trigger(cell)
-            );
+            if (interact) {
+                newButton.setOnClickListener(
+                        v -> puzzleManager.trigger(cell)
+                );
+            }
+            else {
+                newButton.setFocusable(false);
+            }
             if (_referredGrid.get(cell)) {
                 newButton.setBackgroundResource(R.drawable.full_cell);
             }
@@ -106,18 +110,10 @@ public class GridView implements Updatable {
     }
 
     public void play1() {
-        MediaPlayer mp = MediaPlayer.create(_context, R.raw.interchange1);
-        if (mp != null) {
-            mp.setVolume(0.5f, 0.5f);
-            mp.start();
-        }
+        _soundManager.startInterchange1();
     }
 
     public void play2() {
-        MediaPlayer mp = MediaPlayer.create(_context, R.raw.interchange2);
-        if (mp != null) {
-            mp.setVolume(0.5f, 0.5f);
-            mp.start();
-        }
+        _soundManager.startInterchange2();
     }
 }

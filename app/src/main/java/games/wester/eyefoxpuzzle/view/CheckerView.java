@@ -25,17 +25,14 @@ public class CheckerView implements Updatable {
     private final LevelStageManager _levelStageManager;
     private final ImageView _correct;
     private final ImageView _wrong;
-    private final MediaPlayer _correctSound;
-    private final MediaPlayer _wrongSound;
+    private final SoundManager _soundManager;
 
     public CheckerView(Context context, LevelStageManager levelStageManager, ImageView correct, ImageView wrong) {
-        _correctSound = MediaPlayer.create(context, R.raw.correct);
-        _wrongSound = MediaPlayer.create(context, R.raw.wrong);
+        _soundManager = SoundManager.create(context);
+
         _levelStageManager = levelStageManager;
         _correct = correct;
         _wrong = wrong;
-        _wrongSound.setVolume(0.2f, 0.2f);
-        _correctSound.setVolume(0.2f, 0.2f);
         levelStageManager.setCorrectPlayer(this::playCorrect);
         levelStageManager.setWrongPlayer(this::playWrong);
     }
@@ -55,15 +52,11 @@ public class CheckerView implements Updatable {
     }
 
     public void playCorrect() {
-        if (_correctSound != null) {
-            _correctSound.start();
-        }
+        _soundManager.startCorrectSound();
     }
 
     public void playWrong() {
-        if (_wrongSound != null) {
-            _wrongSound.start();
-        }
+        _soundManager.startWrongSound();
     }
 
 }
