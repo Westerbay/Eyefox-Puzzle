@@ -165,10 +165,10 @@
         app:srcCompat="@drawable/button_background" />
 
     <ImageButton
-        android:id="@+id/reset"
+        android:id="@+id/training"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:contentDescription="@string/reset"
+        android:contentDescription="Training"
         android:scaleType="fitXY"
         app:backgroundTint="@color/transparency"
         app:layout_constraintBottom_toTopOf="@+id/guideline54"
@@ -178,10 +178,10 @@
         app:srcCompat="@drawable/button_background" />
 
     <ImageButton
-        android:id="@+id/exit"
+        android:id="@+id/option"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:contentDescription="@string/exit"
+        android:contentDescription="option"
         android:scaleType="fitXY"
         app:backgroundTint="@color/transparency"
         app:layout_constraintBottom_toTopOf="@+id/guideline55"
@@ -295,7 +295,7 @@
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/font"
         android:gravity="center"
-        android:text="@string/reset"
+        android:text="Training"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline62"
         app:layout_constraintEnd_toStartOf="@+id/guideline64"
@@ -309,7 +309,7 @@
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/font"
         android:gravity="center"
-        android:text="@string/exit"
+        android:text="Options"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline63"
         app:layout_constraintEnd_toStartOf="@+id/guideline64"

@@ -16,7 +16,6 @@ import android.os.Looper;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import games.wester.eyefoxpuzzle.R;
@@ -33,10 +32,27 @@ public class MainActivity extends AppCompatActivity {
     public static MediaPlayer _music = null;
 
     private GameManager _gameAdaptation;
-    private AlertDialog _confirmation;
     private Handler _handler;
     private Runnable _imageChanger;
     private boolean _switch;
+    private State _state = new InMainTitleState();
+
+    interface State {
+        void switchState();
+    }
+
+    class InMainTitleState implements State {
+        public void switchState() {
+            findViewById(R.id.play).setVisibility(View.GONE);
+            findViewById(R.id.training).setVisibility(View.GONE);
+            findViewById(R.id.option).setVisibility(View.GONE);
+        }
+    }
+
+    class InOptionState implements State {
+        public void switchState() {
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
         }
         GameManager.createInstance(this);
         _gameAdaptation = GameManager.getInstance();
-        initConfirmation();
         initView();
         initButton();
     }
@@ -84,14 +99,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initButton() {
-        findViewById(R.id.reset).setOnClickListener(
-                v -> _confirmation.show()
-        );
-        findViewById(R.id.exit).setOnClickListener(
-                v -> finishAndRemoveTask()
-        );
         findViewById(R.id.play).setOnClickListener(
                 v -> switchScene()
+        );
+        findViewById(R.id.option).setOnClickListener(
+                v -> switchOption()
         );
     }
 
@@ -104,13 +116,8 @@ public class MainActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
-    private void initConfirmation() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(getString(R.string.confirmation));
-        builder.setMessage(getString(R.string.resetMessage));
-        builder.setPositiveButton(getString(R.string.yes), (dialogInterface, i) -> _gameAdaptation.reset());
-        builder.setNegativeButton(getString(R.string.cancel), (dialogInterface, i) -> _confirmation.cancel());
-        _confirmation = builder.create();
+    public void switchOption() {
+        _state.switchState();
     }
 
     @Override
