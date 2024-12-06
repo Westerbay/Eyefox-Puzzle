@@ -47,7 +47,7 @@ public class TransitionTraining extends AppCompatActivity {
         GameManager.createInstance(this);
         _gameAdaptation = GameManager.getInstance();
         Handler handler = new Handler(Looper.getMainLooper());
-        handler.postDelayed(this::switchScene, 2200);
+        handler.postDelayed(this::switchScene, 1000);
     }
 
     public void switchScene() {

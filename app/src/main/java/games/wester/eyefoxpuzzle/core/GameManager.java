@@ -85,6 +85,9 @@ public class GameManager {
     }
 
     public void loose() {
+        if (_inTraining) {
+            return;
+        }
         _game.loose();
     }
 

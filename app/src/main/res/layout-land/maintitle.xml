@@ -450,4 +450,21 @@
         app:layout_constraintStart_toStartOf="@+id/guideline65"
         app:layout_constraintTop_toTopOf="@+id/guideline61" />
 
+    <TextView
+        android:id="@+id/textTrainBottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/font"
+        android:gravity="center"
+        android:maxLines="1"
+        android:visibility="gone"
+        android:text="@string/training"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/guideline55"
+        app:layout_constraintEnd_toStartOf="@+id/guideline51"
+        app:layout_constraintStart_toStartOf="@+id/guideline15"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

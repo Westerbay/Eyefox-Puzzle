@@ -42,7 +42,7 @@ public class EmptyTransition extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
         );
         Handler handler = new Handler(Looper.getMainLooper());
-        handler.postDelayed(this::switchScene, 1800);
+        handler.postDelayed(this::switchScene, 1000);
     }
 
     public void switchScene() {

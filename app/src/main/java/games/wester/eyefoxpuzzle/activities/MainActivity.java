@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void displayElements(int mode) {
             _gameAdaptation.setTraining(false);
+            findViewById(R.id.level).setVisibility(mode);
             findViewById(R.id.play).setVisibility(mode);
             findViewById(R.id.training).setVisibility(mode);
             findViewById(R.id.option).setVisibility(mode);
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     class InOptionState extends State {
         @Override
         public void displayElements(int mode) {
+            findViewById(R.id.level).setVisibility(mode);
             findViewById(R.id.textMusic).setVisibility(mode);
             findViewById(R.id.soundBar).setVisibility(mode);
             findViewById(R.id.reset).setVisibility(mode);
@@ -79,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void displayElements(int mode) {
             _gameAdaptation.setTraining(true);
+            findViewById(R.id.textTrainBottom).setVisibility(mode);
             findViewById(R.id.play).setVisibility(mode);
             findViewById(R.id.textPlay).setVisibility(mode);
             findViewById(R.id.moves).setVisibility(mode);

@@ -529,4 +529,22 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.735" />
 
+    <TextView
+        android:id="@+id/textTrainBottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/font"
+        android:gravity="center"
+        android:maxLines="1"
+        android:visibility="gone"
+        android:text="@string/training"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintEnd_toStartOf="@+id/guideline30"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline35"
+        app:layout_constraintTop_toTopOf="@+id/guideline8"
+        app:layout_constraintVertical_bias="1.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

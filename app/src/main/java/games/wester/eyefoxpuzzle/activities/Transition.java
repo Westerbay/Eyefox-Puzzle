@@ -49,7 +49,7 @@ public class Transition extends AppCompatActivity {
         _gameAdaptation = GameManager.getInstance();
         initView();
         Handler handler = new Handler(Looper.getMainLooper());
-        handler.postDelayed(this::switchScene, 2200);
+        handler.postDelayed(this::switchScene, 1800);
     }
 
     public void initView() {
