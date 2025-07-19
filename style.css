@@ -1,6 +1,5 @@
 main article {
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 4em;
     grid-column: 1;
     grid-row: 1;
     height: 100%;
@@ -58,14 +57,20 @@ main .actionButton {
         width: 90%; 
         padding: 3em;
     }
+    main article {
+        padding: 4em;
+    }
 }
 
 @media (max-width:1000px) {
     #sleeping {
         display: none;
     }
-    #stand {
+    main img {
         max-width: 60%;
         padding-bottom: 3em;
+    }
+    main article {
+        padding: 2em;
     }
 }
