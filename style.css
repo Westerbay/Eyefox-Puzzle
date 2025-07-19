@@ -1,3 +1,51 @@
 it {
     font-style: italic;
 }
+
+article {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2em;
+}
+
+aside {
+    display: grid;
+    align-items: center;
+    position: relative;
+}
+
+aside:nth-of-type(odd) {
+    grid-template-columns: 4fr 5fr;
+}
+
+aside:nth-of-type(even) {
+    grid-template-columns: 5fr 4fr;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+img {
+    margin: auto;
+    max-width: 100%;
+    max-height: 400px;
+}
+
+li {
+    margin: 0.5em 1em;
+}
+
+p {
+    padding: 1em 0;
+}
+
+.actionButton {
+    margin: auto;
+}
+
+.explore {
+    position: relative;
+    width: 800px;
+    max-width: 100%;
+}

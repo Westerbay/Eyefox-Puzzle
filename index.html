@@ -5,6 +5,7 @@
 		<meta charset="UTF-8">		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="https://westerbay.github.io/Home-Page/script/skull.js"></script>		
+		<link rel="icon" href="https://westerbay.github.io/Home-Page/img/icon.png">
 		<link href='https://westerbay.github.io/Home-Page/style/skull.css' rel='stylesheet'>
 		<link href='https://westerbay.github.io/Home-Page/style/header.css' rel='stylesheet'>
 		<link href='https://westerbay.github.io/Home-Page/style/footer.css' rel='stylesheet'>
@@ -13,26 +14,36 @@
 	<body>
 		<main>
 			<aside>
+				<article>
+					<h2>Eyefox Puzzle</h2>
+					<h4>Flip tiles to match grids !</h4>
+					<p>This project is a puzzle game developed in Java for Android. It was inspired by a game on the Nintendo DS. The rules are simple and Eyefox Puzzle is now available on the Google Play Store.</p>
+					<a href="https://play.google.com/store/apps/details?id=games.wester.eyefoxpuzzle&pcampaignid=web_share" target="_blank" class="actionButton">Play Store</a>
+				</article>
 				<iframe 
-					src="https://www.youtube.com/embed/ML-BLn1C11E?si=LaHCWlVnGoRNnr2O?autoplay=1" 
-					title="Eyefox puzzle" 
-					frameborder="0" 
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-					referrerpolicy="strict-origin-when-cross-origin" 
-					allowfullscreen>
+					src="https://www.youtube.com/embed/ML-BLn1C11E?autoplay=1&mute=1&loop=1">
 				</iframe>
 			</aside>
-			<section>
-				<h2>Privacy Policy</h2>
-				<p>The game value privacy and is committed to protecting it.</p>
-				<ul>
-					<li><strong>Eyefox Puzzle</strong> does not collect, store, or share any personal data from users.</li>
-					<li>The app does not display advertisements or collect any information about your device or usage.</li>
-				</ul>
-				<p>If you have any questions or concerns regarding this privacy policy, feel free to contact me at: <it>westerbay@outlook.com</it>.</p>
-			</section>
+			<aside>
+				<section>
+					<h2>Privacy Policy</h2>
+					<p>The game value privacy and is committed to protecting it.</p>
+					<ul>
+						<li><strong>Eyefox Puzzle</strong> does not collect, store, or share any personal data from users.</li>
+						<li>The app does not display advertisements or collect any information about your device or usage.</li>
+					</ul>
+					<p>If you have any questions or concerns regarding this privacy policy, feel free to contact me at: <it>westerbay@outlook.com</it>.</p>
+				</section>
+				<img id="sprite" src="images/awake1.png" alt="">
+			</aside>
+			<section class="explore">
+				<h2>Rules : </h2>
+				<p>Each level begins with two grids, one on the left and one on the right. The left grid shows the target configuration, while the right grid starts in a different state, with some tiles hidden and others revealed. </p>
+				<p>Your goal is to make the two grids identical by swapping the color of a tile, which will also flip the colors of all its neighboring tiles. </p>
+				<img src="images/game.jpg" alt="">
+			</section>					
 		</main>
-		<script src="script/main.js"></script>
+		<script src="script.js"></script>
 		<script>load("Project");</script>
 	</body>
 </html>
