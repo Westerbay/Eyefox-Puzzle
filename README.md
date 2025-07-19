@@ -50,7 +50,7 @@ A dedicated privacy policy page is available here:
 
 ## 🛠️ Deployment  
 
-The application will soon be available on the **Google Play Store**.  
+Available on the [**Google Play Store**](https://play.google.com/store/apps/details?id=games.wester.eyefoxpuzzle).  
 
 ---
 
