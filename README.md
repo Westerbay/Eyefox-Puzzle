@@ -1,6 +1,6 @@
 # Eyefox Puzzle
 
-This project is a puzzle game developed in Java for Android. It is an educational application I created to deepen my knowledge of Android development. The game is simple yet engaging and will be published on the Google Play Store.
+This project is a puzzle game developed in Java for Android. It was inspired by a game on the Nintendo DS. The rules are simple and Eyefox Puzzle is now published on the Google Play Store.
 
 ---
 
@@ -30,8 +30,9 @@ As a student, this project helps me to:
 
 ## 📁 Asset Sources  
 
-The assets used in this game were sourced from [itch.io](https://itch.io), a well-known platform for creative and free resources.  
+The assets used in this game were sourced from [itch.io](https://itch.io). 
 Here are links to some specific resources:  
+
 - [Font](https://datagoblin.itch.io/monogram)  
 - [Background](https://szadiart.itch.io/pixel-fantasy-caves) 
 - [GUI Elements](https://mounirtohami.itch.io/pixel-art-gui-elements)
