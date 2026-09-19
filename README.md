@@ -1,61 +1,41 @@
 # Eyefox Puzzle
 
-This project is a puzzle game developed in Java for Android. It was inspired by a game on the Nintendo DS. The rules are simple and Eyefox Puzzle is now published on the Google Play Store.
+Eyefox Puzzle is an Android puzzle game I developed on my own in Java during my studies at ENSICAEN. It was inspired by a game on the Nintendo DS.
 
----
+**The game was previously published on Google Play but is no longer available on app stores.** The source code and screenshots remain available in this repository.
 
-## 🎮 Gameplay  
+## Gameplay
 
-- **Rule**: You will have two grids made up of light and dark tiles. Your goal is to make the two grids identical by swapping the color of a tile, which will also flip the colors of all its neighboring tiles.
-![Main Menu](screenshots/maintitle_land.jpg)
+Each level has two grids of light and dark tiles. The goal is to make the grids identical. Changing a tile's color also flips the colors of its neighboring tiles.
+
+![Main menu](screenshots/maintitle_land.jpg)
 ![Game](screenshots/game_land.jpg)
 
----
+## Technologies
 
-## 🚀 Technologies Used  
+- Java
+- Android
+- Android Studio
 
-- **Programming Language**: Java  
-- **Platform**: Android  
-- **Tools**: Android Studio  
+## Project context
 
----
+This was an academic project. I built the Android game myself to learn Android development and take an app through release on Google Play.
 
-## 📖 Project Purpose  
+## Asset credits
 
-As a student, this project helps me to:  
-1. Explore the fundamentals and best practices of Android development.  
-2. Learn how to build and publish an app on the Google Play Store.  
+The game uses assets from [itch.io](https://itch.io), including:
 
----
-
-## 📁 Asset Sources  
-
-The assets used in this game were sourced from [itch.io](https://itch.io). 
-Here are links to some specific resources:  
-
-- [Font](https://datagoblin.itch.io/monogram)  
-- [Background](https://szadiart.itch.io/pixel-fantasy-caves) 
-- [GUI Elements](https://mounirtohami.itch.io/pixel-art-gui-elements)
+- [Font](https://datagoblin.itch.io/monogram)
+- [Background](https://szadiart.itch.io/pixel-fantasy-caves)
+- [GUI elements](https://mounirtohami.itch.io/pixel-art-gui-elements)
 - [Fox](https://elthen.itch.io/2d-pixel-art-fox-sprites)
 
 *Note*: While I do not have links to all the assets used, every asset was verified as royalty-free according to its terms on itch.io.
 
----
+## Privacy policy
 
-## 🔒 Privacy Policy  
+The [privacy policy](https://westerbay.github.io/Eyefox-Puzzle/) remains available for the previously released Android game.
 
-A dedicated privacy policy page is available here:  
-[Privacy Policy](https://westerbay.github.io/Eyefox-Puzzle/)
+## Author
 
----
-
-## 🛠️ Deployment  
-
-Available on the [**Google Play Store**](https://play.google.com/store/apps/details?id=games.wester.eyefoxpuzzle).  
-
----
-
-## Author  
-
-Wester
-
+[Mathis Dubuisson](https://github.com/Westerbay)
