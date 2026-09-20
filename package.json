@@ -1,6 +1,6 @@
 {
   "name": "@westerbay/eyefox-react",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A playable Eyefox Puzzle demo for React and custom elements.",
   "type": "module",
   "license": "GPL-3.0-only",

@@ -282,10 +282,6 @@
   .eyefox .eyefox-between {
     display: none;
   }
-  .eyefox .eyefox-board-wrap:first-child {
-    width: 72%;
-    justify-self: center;
-  }
   .eyefox .eyefox-grid {
     gap: 2px;
     padding: 4px;

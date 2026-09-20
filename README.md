@@ -15,7 +15,7 @@ standalone demo. The Android application remains on `main`.
 Install the versioned package:
 
 ```sh
-pnpm add https://github.com/Westerbay/Eyefox-Puzzle/releases/download/web-v0.1.1/westerbay-eyefox-react-0.1.1.tgz
+pnpm add https://github.com/Westerbay/Eyefox-Puzzle/releases/download/web-v0.1.2/westerbay-eyefox-react-0.1.2.tgz
 ```
 
 ```tsx
@@ -56,6 +56,8 @@ Styles are included inside the shadow root. Attributes `locale`, `theme` and
 `onComplete` through `event.detail`. Removing the element unmounts its React
 tree; reconnecting it starts a fresh game. Multiple instances are independent.
 Imports are safe during server rendering; call registration in the browser.
+
+Both grids keep the same size on desktop and mobile, so their tiles can be compared directly.
 
 ## Scope and controls
 
