@@ -15,7 +15,7 @@ standalone demo. The Android application remains on `main`.
 Install the versioned package:
 
 ```sh
-pnpm add https://github.com/Westerbay/Eyefox-Puzzle/releases/download/web-v0.1.0/westerbay-eyefox-react-0.1.0.tgz
+pnpm add https://github.com/Westerbay/Eyefox-Puzzle/releases/download/web-v0.1.1/westerbay-eyefox-react-0.1.1.tgz
 ```
 
 ```tsx

@@ -141,10 +141,6 @@ test("corner and centre clicks include diagonal neighbours without changing the 
   ] as const) {
     if (index !== 0)
       await game.getByRole("button", { name: "Retry", exact: true }).click()
-    await game.locator(".eyefox-play button").nth(index).hover()
-    await expect(
-      game.locator('.eyefox-play button[data-near="true"]'),
-    ).toHaveCount(affected.length)
     await game.locator(".eyefox-play button").nth(index).click()
     const changed = await readPuzzle(game)
     expect(changed.target).toEqual(initial.target)

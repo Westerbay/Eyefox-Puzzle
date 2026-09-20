@@ -91,7 +91,6 @@ export function EyefoxPuzzle({
   const [round, setRound] = useState<Round | null>(null)
   const [systemDark, setSystemDark] = useState(false)
   const [active, setActive] = useState(0)
-  const [hovered, setHovered] = useState<number | null>(null)
   const buttons = useRef<Array<HTMLButtonElement | null>>([])
   useEffect(() => {
     const media = window.matchMedia("(prefers-color-scheme: dark)")
@@ -109,10 +108,6 @@ export function EyefoxPuzzle({
   const won = round !== null && isSolved(round.board, round.puzzle.target)
   const left = round ? round.puzzle.moveLimit - round.moves : 0
   const locked = !round || won || left === 0
-  const nearby =
-    round && hovered !== null && !locked
-      ? affectedCells(round.puzzle.size, hovered)
-      : []
   function play(index: number) {
     if (!round || locked) return
     const board = flipTiles(round.board, round.puzzle.size, index)
@@ -134,7 +129,6 @@ export function EyefoxPuzzle({
     setLevel(next)
     setRound(newRound(next))
     setActive(0)
-    setHovered(null)
   }
   function navigate(event: KeyboardEvent<HTMLButtonElement>, index: number) {
     if (!round) return
@@ -281,7 +275,6 @@ export function EyefoxPuzzle({
               aria-rowcount={round.puzzle.size}
               aria-colcount={round.puzzle.size}
               aria-describedby={helpId}
-              onMouseLeave={() => setHovered(null)}
             >
               {Array.from({ length: round.puzzle.size }, (_, row) => (
                 <div role="row" className="eyefox-row" key={row}>
@@ -299,13 +292,9 @@ export function EyefoxPuzzle({
                           aria-pressed={value}
                           aria-disabled={locked}
                           tabIndex={active === index ? 0 : -1}
-                          data-near={nearby.includes(index)}
-                          onMouseEnter={() => setHovered(index)}
                           onFocus={() => {
                             setActive(index)
-                            setHovered(index)
                           }}
-                          onBlur={() => setHovered(null)}
                           onKeyDown={(e) => navigate(e, index)}
                           onClick={() => play(index)}
                         >

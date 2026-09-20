@@ -186,13 +186,6 @@
   background: transparent;
   touch-action: manipulation;
 }
-.eyefox .eyefox-play button[data-near="true"]::after {
-  content: "";
-  position: absolute;
-  inset: 2px;
-  border: 2px solid #fff7d1;
-  pointer-events: none;
-}
 .eyefox .eyefox-play button:focus-visible {
   outline: 3px solid #fff;
   outline-offset: 1px;
