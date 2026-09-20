@@ -11,6 +11,12 @@ Each level has two grids of light and dark tiles. The goal is to make the grids 
 ![Main menu](screenshots/maintitle_land.jpg)
 ![Game](screenshots/game_land.jpg)
 
+## Play in the browser
+
+A [playable browser demo](https://westerbay.github.io/Eyefox-Puzzle/) is available, using the original rules and artwork. The [web branch](https://github.com/Westerbay/Eyefox-Puzzle/tree/web) contains a reusable React component and an optional `<eyefox-puzzle>` custom element.
+
+The browser demo is a small example with three difficulty shortcuts. It does not include the Android campaign or saved progression.
+
 ## Technologies
 
 - Java
@@ -34,7 +40,7 @@ The game uses assets from [itch.io](https://itch.io), including:
 
 ## Privacy policy
 
-The [privacy policy](https://westerbay.github.io/Eyefox-Puzzle/) remains available for the previously released Android game.
+The [privacy policy](https://westerbay.github.io/Eyefox-Puzzle/privacy.html) remains available for the previously released Android game.
 
 ## Author
 
