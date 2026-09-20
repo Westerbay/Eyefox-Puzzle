@@ -1,0 +1,314 @@
+.eyefox {
+  --eyefox-bg: #f8f7f4;
+  --eyefox-surface: #fffefc;
+  --eyefox-ink: #282624;
+  --eyefox-muted: #6c665d;
+  --eyefox-line: #d9d4cc;
+  --eyefox-accent: #e99245;
+  --eyefox-focus: #aa5108;
+  box-sizing: border-box;
+  container-type: inline-size;
+  width: 100%;
+  padding: clamp(20px, 4%, 48px);
+  color: var(--eyefox-ink);
+  background: var(--eyefox-bg);
+  border: 1px solid var(--eyefox-line);
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.6;
+  color-scheme: light;
+}
+.eyefox[data-theme="dark"] {
+  --eyefox-bg: #252525;
+  --eyefox-surface: #1b1b1b;
+  --eyefox-ink: #f4efe8;
+  --eyefox-muted: #bcb5aa;
+  --eyefox-line: #4a453f;
+  --eyefox-accent: #eaa566;
+  --eyefox-focus: #f6c18e;
+  color-scheme: dark;
+}
+.eyefox * {
+  box-sizing: border-box;
+}
+.eyefox h2,
+.eyefox h3,
+.eyefox p {
+  margin: 0;
+}
+.eyefox button,
+.eyefox select {
+  font: inherit;
+  color: inherit;
+}
+.eyefox button {
+  cursor: pointer;
+}
+.eyefox button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.eyefox button:focus-visible,
+.eyefox select:focus-visible {
+  outline: 3px solid var(--eyefox-focus);
+  outline-offset: 4px;
+}
+.eyefox .eyefox-intro {
+  max-width: 900px;
+  margin: 0 auto 28px;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+.eyefox .eyefox-fox {
+  object-fit: contain;
+  flex-shrink: 0;
+  image-rendering: pixelated;
+}
+.eyefox .eyefox-intro h2 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+.eyefox .eyefox-intro p {
+  color: var(--eyefox-muted);
+  font-size: 14px;
+}
+.eyefox .eyefox-toolbar {
+  max-width: 900px;
+  margin: 0 auto 28px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  padding-block: 20px;
+  border-block: 1px solid var(--eyefox-line);
+}
+.eyefox .eyefox-difficulty {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  font-size: 13px;
+}
+.eyefox .eyefox-toolbar select {
+  background: var(--eyefox-surface);
+  border: 1px solid var(--eyefox-line);
+  padding: 10px 32px 10px 12px;
+  min-height: 44px;
+  max-width: 200px;
+}
+.eyefox .eyefox-actions {
+  display: flex;
+  gap: 10px;
+}
+.eyefox .eyefox-actions button {
+  border: 1px solid var(--eyefox-line);
+  background: transparent;
+  padding: 10px 14px;
+  min-height: 44px;
+  font-size: 13px;
+}
+.eyefox .eyefox-actions button:last-child {
+  background: var(--eyefox-accent);
+  border-color: var(--eyefox-accent);
+  color: #282624;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.eyefox .eyefox-boards {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 40px minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+  max-width: 740px;
+  margin: 0 auto;
+}
+.eyefox .eyefox-board-wrap {
+  min-width: 0;
+}
+.eyefox .eyefox-board-wrap h3 {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+.eyefox .eyefox-board-wrap h3 span {
+  font-size: 10px;
+  color: var(--eyefox-muted);
+  font-variant-numeric: tabular-nums;
+}
+.eyefox .eyefox-grid {
+  display: grid;
+  gap: 3px;
+  padding: 5px;
+  background: #18120b;
+  border: 1px solid #63503a;
+  aspect-ratio: 1;
+}
+.eyefox .eyefox-target {
+  grid-template-columns: repeat(var(--eyefox-size), minmax(0, 1fr));
+}
+.eyefox .eyefox-grid img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  image-rendering: pixelated;
+  pointer-events: none;
+  user-select: none;
+}
+.eyefox .eyefox-play {
+  grid-template-rows: repeat(var(--eyefox-size), minmax(0, 1fr));
+}
+.eyefox .eyefox-row {
+  display: grid;
+  grid-template-columns: repeat(var(--eyefox-size), minmax(0, 1fr));
+  gap: 3px;
+  min-height: 0;
+}
+.eyefox .eyefox-row > div {
+  min-width: 0;
+  min-height: 0;
+}
+.eyefox .eyefox-play button {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  touch-action: manipulation;
+}
+.eyefox .eyefox-play button[data-near="true"]::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border: 2px solid #fff7d1;
+  pointer-events: none;
+}
+.eyefox .eyefox-play button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 1px;
+  z-index: 1;
+}
+.eyefox .eyefox-play button[aria-disabled="true"] {
+  cursor: default;
+}
+.eyefox .eyefox-between {
+  color: var(--eyefox-muted);
+  font-size: 26px;
+  text-align: center;
+  margin-top: 38px;
+}
+.eyefox .eyefox-flipped {
+  animation: eyefox-turn 0.18s ease-out;
+}
+.eyefox .eyefox-feedback {
+  max-width: 740px;
+  min-height: 64px;
+  margin: 24px auto 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid var(--eyefox-line);
+  font-size: 14px;
+}
+.eyefox .eyefox-state-icon {
+  color: var(--eyefox-accent);
+  font-size: 24px;
+}
+.eyefox .eyefox-feedback strong {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  margin-left: 8px;
+}
+.eyefox .eyefox-keyboard {
+  max-width: 740px;
+  margin: 0 auto;
+  color: var(--eyefox-muted);
+  font-size: 12px;
+}
+.eyefox .eyefox-loading {
+  min-height: 330px;
+  display: grid;
+  place-items: center;
+}
+@keyframes eyefox-turn {
+  from {
+    transform: scaleX(0.7);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@container (max-width:600px) {
+  .eyefox .eyefox-intro {
+    gap: 14px;
+    align-items: start;
+  }
+  .eyefox .eyefox-fox {
+    width: 72px;
+    height: 54px;
+  }
+  .eyefox .eyefox-intro h2 {
+    font-size: 20px;
+  }
+  .eyefox .eyefox-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .eyefox .eyefox-difficulty {
+    justify-content: space-between;
+  }
+  .eyefox .eyefox-toolbar select {
+    flex: 1;
+    max-width: 180px;
+  }
+  .eyefox .eyefox-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .eyefox .eyefox-actions button:last-child {
+    justify-content: center;
+    gap: 12px;
+  }
+  .eyefox .eyefox-boards {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+    gap: 22px;
+  }
+  .eyefox .eyefox-between {
+    display: none;
+  }
+  .eyefox .eyefox-board-wrap:first-child {
+    width: 72%;
+    justify-self: center;
+  }
+  .eyefox .eyefox-grid {
+    gap: 2px;
+    padding: 4px;
+  }
+  .eyefox .eyefox-row {
+    gap: 2px;
+  }
+  .eyefox .eyefox-feedback {
+    max-width: 300px;
+  }
+  .eyefox .eyefox-keyboard {
+    max-width: 300px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .eyefox .eyefox-flipped {
+    animation: none;
+  }
+}
