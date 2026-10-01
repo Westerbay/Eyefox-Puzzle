@@ -38,10 +38,6 @@ The game uses assets from [itch.io](https://itch.io), including:
 
 *Note*: While I do not have links to all the assets used, every asset was verified as royalty-free according to its terms on itch.io.
 
-## Privacy policy
-
-The [privacy policy](https://westerbay.github.io/Eyefox-Puzzle/privacy.html) remains available for the previously released Android game.
-
 ## Author
 
 [Mathis Dubuisson](https://github.com/Westerbay)
