@@ -44,11 +44,6 @@ function Demo() {
         <a href="https://github.com/Westerbay/Eyefox-Puzzle/tree/web">
           {locale === "fr" ? "Code et crédits" : "Source and credits"}
         </a>
-        <a href="./privacy.html">
-          {locale === "fr"
-            ? "Confidentialité du jeu Android"
-            : "Android privacy policy"}
-        </a>
       </nav>
     </main>
   )

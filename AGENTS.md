@@ -4,7 +4,7 @@ The `web` branch maintains the reusable React Eyefox Puzzle component and its st
 
 Preserve the original rules from `Puzzle.java`, `LevelStage.java` and `Grid.java`: a move flips the selected tile and all adjacent tiles, including diagonals. Keep generation solvable and bounded. The web demo omits the Android campaign, lives, audio and persistence.
 
-Keep styles scoped, imports safe during server rendering, French and English strings, keyboard controls and light/dark support. The optional custom element must isolate styles and clean up React on disconnect. Preserve asset credits, the GPL license and the Android privacy-policy page.
+Keep styles scoped, imports safe during server rendering, French and English strings, keyboard controls and light/dark support. The optional custom element must isolate styles and clean up React on disconnect. Preserve asset credits and the GPL license.
 
 Run formatting, types, core tests, library/demo builds and browser checks. Verify the packed package in the portfolio before publishing. Documentation and scoped commits are in English. Pages publication uses the manual workflow on this branch.
 

@@ -95,12 +95,8 @@ The manual **Publish Eyefox demo** GitHub Actions workflow publishes
 `dist/site` from the `web` branch. Releases use a `web-v*` tag to keep web
 package versions separate from the Android project.
 
-## Credits and privacy
+## Credits
 
 Code: Mathis Dubuisson, GPL-3.0-only. See [LICENSE](LICENSE) and
 [third-party asset credits](THIRD_PARTY_NOTICES.md). The artwork retains its
 original colours and is not covered by a new licensing claim.
-
-The historical [Android privacy policy](https://westerbay.github.io/Eyefox-Puzzle/privacy.html)
-is preserved and linked from the demo. The browser demo runs locally without
-saving game state or sending gameplay data.

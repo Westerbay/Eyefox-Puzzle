@@ -39,8 +39,8 @@
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/*.test.ts",
     "test:e2e": "playwright test",
-    "format": "prettier --write src demo tests public *.html *.json *.ts *.md .github",
-    "format:check": "prettier --check src demo tests public *.html *.json *.ts *.md .github",
+    "format": "prettier --write src demo tests *.html *.json *.ts *.md .github",
+    "format:check": "prettier --check src demo tests *.html *.json *.ts *.md .github",
     "check": "pnpm format:check && pnpm typecheck && pnpm test && pnpm build",
     "preview": "vite preview --host 127.0.0.1 --port 4178 --strictPort"
   },
